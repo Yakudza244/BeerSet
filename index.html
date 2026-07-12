@@ -1,0 +1,680 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Set | Мережа магазинів крафтового пива Львів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Segoe+UI:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #f3f4f6;
+            background-color: #0f0f12;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #16161a;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #ff9f1c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-signature {
+            font-family: 'Caveat', cursive;
+            font-size: 38px;
+            color: #ff9f1c;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 159, 28, 0.3);
+            transform: rotate(-3deg);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(15, 15, 18, 0.8), rgba(15, 15, 18, 0.9)), url('https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?q=80&w=1200') no-repeat center center/cover;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 45px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #9ca3af;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff9f1c;
+            color: #0f0f12;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 159, 28, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #ff9f1c;
+            box-shadow: none;
+            margin-left: 20px;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 13px;
+            margin-top: 15px;
+            border-radius: 20px;
+        }
+
+        .features {
+            padding: 80px 0;
+            background-color: #16161a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .section-title span {
+            color: #ff9f1c;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #1f1f24;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #2a2a32;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card h3 { color: #fff; margin-bottom: 15px;}
+
+        .catalog-section { padding: 90px 0; }
+
+        .showcase { display: flex; flex-direction: column; gap: 60px; margin-top: 40px; }
+
+        .showcase-item {
+            display: flex;
+            background-color: #16161a;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2a2a32;
+        }
+
+        .showcase-item:nth-child(even) { flex-direction: row-reverse; }
+
+        .showcase-gradient-img {
+            flex: 1;
+            min-height: 500px;
+            background: radial-gradient(circle at center, #2c1a04 0%, #0f0f12 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-container {
+            position: relative;
+            width: 140px;
+            height: 240px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* --- ПИВО 1 --- */
+        .beer-glass {
+            position: relative;
+            width: 100px;
+            height: 200px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            z-index: 2;
+        }
+
+        .liquid-base {
+            width: 100%; height: 0%;
+            background: linear-gradient(to top, #d47a00, #ffb84d);
+            position: relative;
+            transition: height 2.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        .showcase-item.animated .liquid-base { height: 85%; }
+
+        .foam {
+            position: absolute; top: 0; left: 0; width: 100%; height: 0px;
+            background-color: #fff; border-radius: 10px 10px 0 0;
+            transition: height 2.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        .showcase-item.animated .foam { height: 25px; top: -20px; }
+
+        .beer-stream {
+            position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+            width: 8px; height: 0; background: linear-gradient(to bottom, #ffb84d, #d47a00);
+            z-index: 1; opacity: 0;
+        }
+
+        .showcase-item.animated .beer-stream { animation: pourStream 2.3s ease-in-out forwards; }
+
+        @keyframes pourStream {
+            0% { height: 0; top: -50px; opacity: 1; }
+            15% { height: 350px; top: -50px; opacity: 1; }
+            85% { height: 350px; top: -50px; opacity: 1; }
+            100% { height: 0; top: 150px; opacity: 0; }
+        }
+
+        /* --- КРАФТ 2 --- */
+        .craft-glass {
+            position: relative; width: 100px; height: 160px;
+            border: 4px solid rgba(255, 255, 255, 0.18); border-top: none;
+            border-radius: 40px 40px 25px 25px; background: rgba(255, 255, 255, 0.02);
+            overflow: hidden; display: flex; align-items: flex-end; z-index: 2; margin-bottom: 30px;
+        }
+
+        .craft-stem { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 12px; height: 35px; background: rgba(255, 255, 255, 0.18); z-index: 1; }
+        .craft-base { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 6px; background: rgba(255, 255, 255, 0.18); border-radius: 10px 10px 0 0; z-index: 1; }
+        
+        .liquid-craft {
+            width: 100%; height: 0%; background: linear-gradient(to top, #b65200, #e68a00);
+            position: relative; transition: height 2.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+        .showcase-item.animated .liquid-craft { height: 80%; }
+
+        /* --- БЛОК 3: ПИШНА, ОБ'ЄМНА КУПА ЗАКУСОК --- */
+        .snack-scene {
+            position: relative;
+            width: 340px;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .squid-plate {
+            width: 310px;
+            height: 45px;
+            background: linear-gradient(to bottom, #25252b 0%, #111115 100%);
+            border: 2px solid #444452;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9), inset 0 5px 15px rgba(0,0,0,0.7);
+        }
+
+        .beer-set-avalanche {
+            position: absolute;
+            width: 310px;
+            height: 300px;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .showcase-item.animated .set-item {
+            animation: thickSnackFall 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes thickSnackFall {
+            0% { opacity: 0; transform: translate(var(--endX), -300px) scale(0.6) rotate(0deg); }
+            30% { opacity: 1; }
+            100% { opacity: 1; transform: translate(var(--endX), var(--endY)) scale(1) rotate(var(--rot)); }
+        }
+
+        .c-ring {
+            position: absolute; width: 44px; height: 44px;
+            border: 7px solid #e5b976; border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.6); opacity: 0; left: 50%; margin-left: -22px; bottom: 0;
+        }
+
+        .cheese-stripe {
+            position: absolute; width: 55px; height: 11px;
+            background: linear-gradient(to right, #fdf0cc, #e4cb91); border-radius: 4px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.5); opacity: 0; left: 50%; margin-left: -27px; bottom: 0;
+        }
+
+        .meat-stick {
+            position: absolute; width: 70px; height: 12px;
+            background: linear-gradient(to right, #992920, #63140e); border-radius: 4px;
+            border: 1px solid #4e0d09; box-shadow: 0 4px 6px rgba(0,0,0,0.7); opacity: 0; left: 50%; margin-left: -35px; bottom: 0;
+        }
+
+        /* 
+           ОНОВЛЕНА ГЕОМЕТРІЯ:
+           Розширили середні та верхні рівні по боках (збільшили --endX), 
+           щоб прибрати ефект "тонкої палички" зверху. Тепер купа округла та пишна.
+        */
+        
+        /* ШАР 1: ШИРОКА ОСНОВА (Y: 0px) */
+        .f1  { --endX: -115px; --endY: 0px;   --rot: 12deg;   animation-delay: 0.04s !important; }
+        .f2  { --endX: -90px;  --endY: -4px;  --rot: -20deg;  animation-delay: 0.08s !important; }
+        .f3  { --endX: -65px;  --endY: -2px;  --rot: 45deg;   animation-delay: 0.12s !important; }
+        .f4  { --endX: -35px;  --endY: 0px;   --rot: -15deg;  animation-delay: 0.16s !important; }
+        .f5  { --endX: -10px;  --endY: -5px;  --rot: 85deg;   animation-delay: 0.20s !important; }
+        .f6  { --endX: 15px;   --endY: -3px;  --rot: -55deg;  animation-delay: 0.24s !important; }
+        .f7  { --endX: 40px;   --endY: 0px;   --rot: 30deg;   animation-delay: 0.28s !important; }
+        .f8  { --endX: 65px;   --endY: -4px;  --rot: -10deg;  animation-delay: 0.32s !important; }
+        .f9  { --endX: 90px;   --endY: -2px;  --rot: 100deg;  animation-delay: 0.36s !important; }
+        .f10 { --endX: 115px;  --endY: 0px;   --rot: -35deg;  animation-delay: 0.40s !important; }
+
+        /* ШАР 2: СЕРЕДИНА (Додали об'єму на краях, Y: -25px) */
+        .m1  { --endX: -100px; --endY: -23px; --rot: 25deg;   animation-delay: 0.43s !important; }
+        .m2  { --endX: -75px;  --endY: -26px; --rot: -65deg;  animation-delay: 0.46s !important; }
+        .m3  { --endX: -45px;  --endY: -24px; --rot: 40deg;   animation-delay: 0.49s !important; }
+        .m4  { --endX: -15px;  --endY: -25px; --rot: -40deg;  animation-delay: 0.52s !important; }
+        .m5  { --endX: 15px;   --endY: -24px; --rot: 70deg;   animation-delay: 0.55s !important; }
+        .m6  { --endX: 45px;   --endY: -26px; --rot: -25deg;  animation-delay: 0.58s !important; }
+        .m7  { --endX: 75px;   --endY: -23px; --rot: 115deg;  animation-delay: 0.61s !important; }
+        .m8  { --endX: 100px;  --endY: -25px; --rot: -30deg;  animation-delay: 0.64s !important; }
+
+        /* ШАР 3: ЦЕНТРАЛЬНЕ ПОТОВЩЕННЯ (Розширили боки, Y: -50px) */
+        .c1  { --endX: -85px;  --endY: -48px; --rot: -15deg;  animation-delay: 0.67s !important; }
+        .c2  { --endX: -60px;  --endY: -51px; --rot: 90deg;   animation-delay: 0.70s !important; }
+        .c3  { --endX: -30px;  --endY: -47px; --rot: -50deg;  animation-delay: 0.73s !important; }
+        .c4  { --endX: 0px;    --endY: -50px; --rot: 35deg;   animation-delay: 0.76s !important; }
+        .c5  { --endX: 30px;   --endY: -47px; --rot: -85deg;  animation-delay: 0.79s !important; }
+        .c6  { --endX: 60px;   --endY: -51px; --rot: 20deg;   animation-delay: 0.82s !important; }
+        .c7  { --endX: 85px;   --endY: -49px; --rot: -60deg;  animation-delay: 0.85s !important; }
+
+        /* ШАР 4: ПІДХІД ДО ВЕРШИНИ (Тримаємо округлість, Y: -75px) */
+        .t1  { --endX: -70px;  --endY: -73px; --rot: 55deg;   animation-delay: 0.88s !important; }
+        .t2  { --endX: -40px;  --endY: -76px; --rot: -35deg;  animation-delay: 0.91s !important; }
+        .t3  { --endX: -10px;  --endY: -72px; --rot: 20deg;   animation-delay: 0.94s !important; }
+        .t4  { --endX: 15px;   --endY: -75px; --rot: -70deg;  animation-delay: 0.97s !important; }
+        .t5  { --endX: 45px;   --endY: -73px; --rot: 50deg;   animation-delay: 1.00s !important; }
+        .t6  { --endX: 70px;   --endY: -74px; --rot: -15deg;  animation-delay: 1.03s !important; }
+
+        /* ШАР 5: МАСИВНА ВЕРХНЯ ЧАСТИНА (Широкий плоский верх, Y: -100px) */
+        .v1  { --endX: -50px;  --endY: -97px;  --rot: -25deg; animation-delay: 1.06s !important; }
+        .v2  { --endX: -25px;  --endY: -100px; --rot: 80deg;  animation-delay: 1.09s !important; }
+        .v3  { --endX: 0px;    --endY: -96px;  --rot: -45deg; animation-delay: 1.12s !important; }
+        .v4  { --endX: 25px;   --endY: -99px;  --rot: 15deg;  animation-delay: 1.15s !important; }
+        .v5  { --endX: 50px;   --endY: -98px;  --rot: -65deg; animation-delay: 1.18s !important; }
+
+        /* ШАР 6: МАКІВКА (Згладжена, лежить плоско, Y: -120px) */
+        .p1  { --endX: -30px;  --endY: -118px; --rot: 40deg;  animation-delay: 1.21s !important; }
+        .p2  { --endX: -5px;   --endY: -121px; --rot: -10deg; animation-delay: 1.24s !important; }
+        .p3  { --endX: 20px;   --endY: -117px; --rot: 65deg;  animation-delay: 1.27s !important; }
+
+        /* ШАР 7: ФІНАЛЬНИЙ ДЕКОР (Горизонтально лежить зверху, ніяких вертикальних палок) */
+        .top1 { --endX: -15px; --endY: -135px; --rot: 5deg;   animation-delay: 1.30s !important; }
+        .top2 { --endX: 15px;  --endY: -136px; --rot: -8deg;  animation-delay: 1.33s !important; }
+        .top3 { --endX: 0px;   --endY: -142px; --rot: 88deg;  animation-delay: 1.37s !important; }
+
+        .brand-sticker {
+            position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) rotate(-6deg);
+            font-family: 'Caveat', cursive; background-color: #16161a; color: #ff9f1c;
+            padding: 3px 12px; font-size: 16px; font-weight: bold; border-radius: 20px; border: 1.5px dashed #ff9f1c;
+            z-index: 3; opacity: 0; transition: opacity 0.5s ease 0.4s;
+        }
+        .showcase-item.animated .brand-sticker { opacity: 1; }
+
+        .plate-sticker {
+            position: absolute; bottom: 35px; right: 35px; transform: rotate(6deg);
+            font-family: 'Caveat', cursive; background-color: #16161a; color: #ff9f1c;
+            padding: 2px 10px; font-size: 13px; font-weight: bold; border-radius: 20px; border: 1.5px dashed #ff9f1c;
+            z-index: 6; opacity: 0; transition: opacity 0.4s ease 1.5s;
+        }
+        .showcase-item.animated .plate-sticker { opacity: 1; }
+
+        .showcase-info { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .showcase-info h3 { font-size: 26px; color: #fff; margin-bottom: 15px; border-left: 4px solid #ff9f1c; padding-left: 15px; }
+        .showcase-info p { color: #cbd5e1; margin-bottom: 15px; }
+        .showcase-info ul { list-style: none; color: #9ca3af; width: 100%; }
+        .showcase-info ul li { margin-bottom: 8px; position: relative; padding-left: 20px; text-align: left; }
+        .showcase-info ul li::before { content: "✓"; color: #ff9f1c; position: absolute; left: 0; }
+
+        .about { padding: 90px 0; background-color: #16161a; }
+        .about-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: #cbd5e1; }
+        .contacts { background-color: #0f0f12; padding: 70px 0; border-top: 1px solid #2a2a32; }
+        .contacts-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+        .contact-box { flex: 1; min-width: 320px; }
+        .contact-box h3 { color: #ff9f1c; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; }
+        .contact-box p { margin-bottom: 12px; color: #cbd5e1; }
+        .contact-box a { color: #ff9f1c; text-decoration: none; font-weight: 600; }
+
+        .accordion-btn {
+            background-color: #1f1f24; color: #fff; border: 1px solid #2a2a32; padding: 14px 20px; width: 100%;
+            text-align: left; font-weight: bold; font-size: 16px; border-radius: 8px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background-color: #16161a; border-radius: 0 0 8px 8px; }
+        .address-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 30px; padding: 20px; list-style: none; }
+        .address-grid li a { display: block; padding: 6px 0; border-bottom: 1px solid #2a2a32; color: #cbd5e1; font-size: 14px; text-decoration: none; }
+
+        footer { background-color: #0f0f12; color: #6b7280; text-align: center; padding: 25px 0; font-size: 14px; border-top: 1px solid #1f1f24; }
+
+        @media (max-width: 768px) {
+            .header-flex { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .showcase-item, .showcase-item:nth-child(even) { flex-direction: column; }
+            .showcase-gradient-img { height: 450px; min-height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <a href="#" class="logo-signature">BeerSet</a>
+            <nav>
+                <a href="#menu">Асортимент</a>
+                <a href="#review">Огляд товарів</a>
+                <a href="#about">Про нас</a>
+                <a href="#stores">Магазини</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Твій ідеальний пивний сет</h2>
+            <p>Великий вибір свіжого розливного та крафтового пива, смачні закуски та найкраща атмосфера у Львові.</p>
+            <div class="hero-btns">
+                <a href="tel:+380686003664" class="btn">Замовити доставку</a>
+                <a href="#stores" class="btn btn-secondary">Знайти магазин</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="features">
+        <div class="container">
+            <h2 class="section-title">Що у нас є <span>?</span></h2>
+            <div class="grid">
+                <a href="#beer-review" class="card">
+                    <h3>Розливне пиво</h3>
+                    <p>Понад 20 кращих сортів свіжого живого пива від українських та європейських броварень.</p>
+                </a>
+                <a href="#craft-review" class="card">
+                    <h3>Крафтовий ексклюзив</h3>
+                    <p>Стильні новинки, ІРА, міцні стаути та кислі елі для поціновувачів.</p>
+                </a>
+                <a href="#snack-review" class="card">
+                    <h3>Преміум закуски</h3>
+                    <p>Величезний асортимент: від м'ясних джерків до рибних делікатесів.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="review" class="catalog-section">
+        <div class="container">
+            <h2 class="section-title">Фотоогляд нашого <span>асортименту</span></h2>
+            
+            <div class="showcase">
+                
+                <!-- БЛОК 1: СВІЖЕ ПИВО -->
+                <div id="beer-review" class="showcase-item">
+                    <div class="showcase-gradient-img">
+                        <div class="beer-stream"></div>
+                        <div class="glass-container">
+                            <div class="beer-glass">
+                                <div class="liquid-base">
+                                    <div class="foam"></div>
+                                </div>
+                                <div class="brand-sticker">BeerSet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>Свіже Розливне Пиво</h3>
+                        <p>Ми ретельно стежимо за тиском в системі охолодження та якістю розливу, щоб ти отримував максимум свіжості.</p>
+                        <ul>
+                            <li>Класичний світлий Лагер</li>
+                            <li>Нефільтроване пшеничне</li>
+                            <li>Оксамитове темне</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- БЛОК 2: КРАФТ -->
+                <div id="craft-review" class="showcase-item">
+                    <div class="showcase-gradient-img">
+                        <div class="beer-stream" style="background: linear-gradient(to bottom, #e68a00, #b65200);"></div>
+                        <div class="glass-container">
+                            <div class="craft-stem"></div>
+                            <div class="craft-base"></div>
+                            <div class="craft-glass">
+                                <div class="liquid-craft">
+                                    <div class="foam"></div>
+                                </div>
+                                <div class="brand-sticker">BeerSet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>Крафтові Ексклюзиви</h3>
+                        <p>Найкращі локальні броварні та світові сорта пива з унікальними смаковими профілями.</p>
+                        <ul>
+                            <li>Ароматні IPA та APA</li>
+                            <li>Fruited Sour Ales</li>
+                            <li>Густі імперські стаути</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- БЛОК 3: ПИШНА І ОБ'ЄМНА КУПА ЗАКУСОК -->
+                <div id="snack-review" class="showcase-item">
+                    <div class="showcase-gradient-img">
+                        <div class="snack-scene">
+                            
+                            <div class="beer-set-avalanche">
+                                <!-- ШАР 1 (ОСНОВА) -->
+                                <div class="set-item c-ring f1"></div>
+                                <div class="set-item cheese-stripe f2"></div>
+                                <div class="set-item meat-stick f3"></div>
+                                <div class="set-item c-ring f4"></div>
+                                <div class="set-item cheese-stripe f5"></div>
+                                <div class="set-item meat-stick f6"></div>
+                                <div class="set-item c-ring f7"></div>
+                                <div class="set-item cheese-stripe f8"></div>
+                                <div class="set-item meat-stick f9"></div>
+                                <div class="set-item c-ring f10"></div>
+
+                                <!-- ШАР 2 (СЕРЕДИНА) -->
+                                <div class="set-item meat-stick m1"></div>
+                                <div class="set-item c-ring m2"></div>
+                                <div class="set-item cheese-stripe m3"></div>
+                                <div class="set-item c-ring m4"></div>
+                                <div class="set-item meat-stick m5"></div>
+                                <div class="set-item cheese-stripe m6"></div>
+                                <div class="set-item c-ring m7"></div>
+                                <div class="set-item meat-stick m8"></div>
+
+                                <!-- ШАР 3 (БІЛЬШЕ ОБ'ЄМУ) -->
+                                <div class="set-item cheese-stripe c1"></div>
+                                <div class="set-item meat-stick c2"></div>
+                                <div class="set-item c-ring c3"></div>
+                                <div class="set-item cheese-stripe c4"></div>
+                                <div class="set-item meat-stick c5"></div>
+                                <div class="set-item c-ring c6"></div>
+                                <div class="set-item cheese-stripe c7"></div>
+
+                                <!-- ШАР 4 -->
+                                <div class="set-item c-ring t1"></div>
+                                <div class="set-item cheese-stripe t2"></div>
+                                <div class="set-item meat-stick t3"></div>
+                                <div class="set-item c-ring t4"></div>
+                                <div class="set-item cheese-stripe t5"></div>
+                                <div class="set-item meat-stick t6"></div>
+
+                                <!-- ШАР 5 -->
+                                <div class="set-item meat-stick v1"></div>
+                                <div class="set-item c-ring v2"></div>
+                                <div class="set-item cheese-stripe v3"></div>
+                                <div class="set-item meat-stick v4"></div>
+                                <div class="set-item c-ring v5"></div>
+
+                                <!-- ШАР 6 -->
+                                <div class="set-item c-ring p1"></div>
+                                <div class="set-item cheese-stripe p2"></div>
+                                <div class="set-item meat-stick p3"></div>
+
+                                <!-- ШАР 7 (ЗГЛАДЖЕНИЙ ВЕРХ) -->
+                                <div class="set-item cheese-stripe top1"></div>
+                                <div class="set-item meat-stick top2"></div>
+                                <div class="set-item c-ring top3"></div>
+                            </div>
+
+                            <!-- Велика тарілка -->
+                            <div class="squid-plate"></div>
+                            
+                            <!-- Брендована наклейка -->
+                            <div class="plate-sticker">BeerSet</div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>Гігантські сети закусок</h3>
+                        <p>Ми не жаліємо інгредієнтів. Справжня гора добірних смаколиків, що повністю засипає тарілку під нуль!</p>
+                        <ul>
+                            <li>Багато золотистих кілець кальмара</li>
+                            <li>Гора рваного копченого сиру «косичка»</li>
+                            <li>Обсипка з кабаносі та м'ясних паличок</li>
+                        </ul>
+                        <a href="tel:+380686003664" class="btn btn-sm">Замовити ГІГАНТСЬКИЙ сет</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Про мережу <span>Beer Set</span></h2>
+            <div class="about-text">
+                <p>Beer Set — це найбільша мережа пивної культури у місті Львів. Тільки найкращий сервіс та свіжість продуктів.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="stores" class="contacts">
+        <div class="container">
+            <div class="contacts-flex">
+                <div class="contact-box" style="flex: 2;">
+                    <h3>Наші локації</h3>
+                    <button class="accordion-btn" onclick="toggleAddresses()">
+                        Показати всі адреси мережі у Львові <span id="arrow">▼</span>
+                    </button>
+                    <div id="address-list" class="accordion-content">
+                        <ul class="address-grid">
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Академіка+Сахарова+50" target="_blank">📍 Сахарова, 50</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Антоновича+20а" target="_blank">📍 Антоновича, 20а</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Варшавська+54" target="_blank">📍 Варшавська, 54</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Наукова+112" target="_blank">📍 Наукова, 112</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Чорновола+23" target="_blank">📍 Чорновола, 23</a></li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&query=Beer+Set+Львів+Сихівська+2" target="_blank">📍 Сихівська, 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-box" style="flex: 1;">
+                    <h3>Контакти</h3>
+                    <p><strong>Доставка:</strong> <a href="tel:+380686003664">+38 (068) 600-36-64</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/beerset.lviv/" target="_blank">@beerset.lviv</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Мережа маркетів Beer Set Львів. Надмірне споживання алкоголю може бути шкідливим для вашого здоров'я.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAddresses() {
+            var content = document.getElementById("address-list");
+            var arrow = document.getElementById("arrow");
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0px"; arrow.innerHTML = "▼";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px"; arrow.innerHTML = "▲";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var items = document.querySelectorAll('.showcase-item');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.2 });
+            items.forEach(function(item) { observer.observe(item); });
+        });
+    </script>
+</body>
+</html>
